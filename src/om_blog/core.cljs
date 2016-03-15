@@ -38,6 +38,13 @@
 (defn get-single-article [page-id channel]
     (load-articles (str "http://localhost:3000/blogposts/" page-id)
     (fn [res]
+        (let [final-res {:type "single" :value res}]
+        (put! channel final-res)))))
+
+
+(defn reload-articles [page-num channel]
+    (load-articles (str "http://localhost:3000/blogposts?page=" page-num)
+    (fn [res]
         (put! channel res))))
 
 (defn article [article owner]
@@ -64,10 +71,16 @@
                 (map
                     #(dom/button #js {:type "button"
                                       :className "pageBar"
-                                      :onClick (fn [] (put! current-page %))} % )
+                                      :onClick (fn [] (reload-articles (- % 1) current-page))} % )
                     (range 1 (+ 1 (:article-pages state)))))))))
 
-
+(defn single-article [state owner]
+    (reify
+        om/IRender
+        (render [_]
+            (dom/div #js {:className "container"}
+                (dom/h2 nil (get state "title"))
+                (dom/span nil (get state "body"))))))
 
 (defn articles [state owner]
   (reify
@@ -77,6 +90,7 @@
     om/IRenderState
     (render-state [this {:keys [current-page]}]
         (dom/div #js {:className "container"}
+        (om/build single-article (:current-page state))
         (om/build page-bar state
                            {:init-state {:current-page current-page}})
       (apply dom/ul nil (om/build-all article (:articles state)
@@ -87,9 +101,10 @@
       (let [current-page (om/get-state owner :current-page)]
         (go (loop []
             (let [change (<! current-page)]
-                ;(om/transact! state :page-number (fn [] change)
-                    ;(do (om/transact! state :current-page (fn [] change))
-                    (.log js/console (str change)))(recur))))
+                (if (= (:type change) "single")
+                (om/transact! state :current-page (fn [] (:value change)))
+                (om/transact! state :articles (fn [] (get change "articles")))
+                    ))(recur))))
       (load-articles
         (str "http://localhost:3000/blogposts?page=" (- (:page-number state) 1))
         (fn [res]
