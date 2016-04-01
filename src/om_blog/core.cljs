@@ -62,36 +62,45 @@
                                                             {:__html
                                                                 (.toHTML js/markdown
                                                                     (str (get (om/get-state owner :article) "body")))}})))
-                                (b/button {:bs-style "primary"
-                                           :bs-size "large"
+                                (b/button {:className "arrowLink arrowRight"
                                            :on-click (fn [_] (do (om/set-state! owner :visible? true)
                                                                  (load-articles (str "http://localhost:3000/blogposts/"
-                                                                                (str (get article "id")))
+                                                                                    (str (get article "id")))
                                                                     (fn [res]
                                                                         (om/set-state! owner :article (js->clj res))))))}
-                                    "Read More")))))
+                                    "Read Article")))))
 
 (defn article [article owner]
     (reify
         om/IRenderState
         (render-state [state {:keys [current-page]}]
-            (dom/li nil
-                (apply dom/div nil
-                    [(dom/h2 nil (get article "title"))
-                    (dom/div #js {:dangerouslySetInnerHTML #js {:__html (.toHTML js/markdown (str (get article "body")))}})
-                    (om/build trigger article)])))))
+            (dom/div #js {:className "col-sm-4 article_container"}
+                (dom/article #js {:id (str (get article "id"))}
+                (apply dom/div #js {:className "article_content"}
+                    [(dom/h3 nil (get article "title"))
+                    (dom/div #js {:dangerouslySetInnerHTML #js
+                                 {:__html (.toHTML js/markdown
+                                            (str (get article "body")))}})
+                    (om/build trigger article)]))))))
 
 (defn page-bar [state owner]
     (reify
         om/IRenderState
         (render-state [this {:keys [current-page]}]
-            (dom/div #js {:className "container"}
-                (dom/div #js {:id "pageBar"}
-                (map
-                    #(dom/button #js {:type "button"
-                                      :className "pageBar"
-                                      :onClick (fn [] (reload-articles (- % 1) current-page))} % )
-                    (range 1 (+ 1 (:article-pages state)))))))))
+            (dom/div #js {:className "col-sm-12"}
+                (dom/nav nil
+                    (map
+                        #(dom/button #js {:type "button"
+                                          :className "pagination"
+                                          :onClick (fn [] (reload-articles (- % 1) current-page))} % )
+                            (range 1 (+ 1 (:article-pages state)))))))))
+
+
+(defn get-clear-left [res num-art]
+    (let [id-num (take-nth 3 (range num-art))
+          articles (get res "articles")
+          clear-left (map #(str (get (nth articles %) "id")) id-num)]
+        clear-left))
 
 (defn articles [state owner]
     (reify
@@ -100,7 +109,7 @@
             {:current-page (chan)})
         om/IRenderState
         (render-state [this {:keys [current-page]}]
-            (dom/div #js {:className "container"}
+            (dom/div #js {:id "clear"}
             (apply dom/ul nil (om/build-all article (:articles state)
                             {:init-state {:current-page current-page}}))
             (om/build page-bar state
@@ -119,9 +128,11 @@
                     (str "http://localhost:3000/blogposts?page=" (- (:page-number state) 1))
                         (fn [res]
                             (do
+                                (.log js/console (str (get-clear-left res (count (:articles state)))))
                                 (om/transact! state :articles (fn [] (get res "articles")))
                                 (let [num-pages (/ (count (:articles state)) 5)]
                                 (om/transact! state :article-pages (fn [] num-pages))))))))))
+
 
 (defn main-page [state owner]
     (reify
@@ -129,12 +140,11 @@
         (render [_]
             (dom/div #js {:id "content"
                           :className ""}
-            (dom/div #js {:className "container"}
-                    (dom/h2 nil "Articles: ")
+            (dom/div nil
                     (dom/div nil (om/build articles state)))))))
 
 (om/root main-page app-state
-  {:target (. js/document (getElementById "app"))})
+  {:target (. js/document (getElementById "app-blog"))})
 
 
 (defn on-js-reload []

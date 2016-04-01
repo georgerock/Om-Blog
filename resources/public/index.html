@@ -1,23 +1,668 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <title>WhiteCity Code - Web application and mobile development in Alba Iulia, Romania</title>
+
+    <!--meta-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
-         rel="stylesheet"/>
-    <title>Om Blog WCC</title>
-  </head>
-  <body>
-    <div id="app">
-      <h2>Figwheel template</h2>
-      <p>Checkout your developer console.</p>
-  </div>
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="keywords" content="web application development, mobile app development, desktop app development, php, python, ruby, clojure" />
+    <meta name="description" content="WhiteCity Code provides web application and mobile app development from Alba iulia, Romania. We can code python, php, ruby, clojure and much more">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicons/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicons/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicons/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/favicons/apple-touch-icon-57-precomposed.png">
+    <link href="images/favicons/favicon.png" rel="shortcut icon">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/icons.css" type="text/css" rel="stylesheet">
+    <link href="css/magnific-popup.css" type="text/css" rel="stylesheet">
+    <link href="rs-plugin/css/settings.css" type="text/css" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+
+
+</head>
+<body class="oblique loading style3">
+    <div id="loader" class="text-center">
+        <a href="/"><img src="images/logo_black.png" alt="WhiteCity Code Logo" /></a>
+        <h2>is loading...</h2>
+    </div>
+    <div id="page" class="animate">
+        <!--Header-->
+        <header id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="logo"><a href="/"><img class="img-responsive" src="images/logowhite.png" alt="White City Code Logo" /></a></div>
+                    </div>
+                </div>
+            </div>
+            <!--MENU-->
+            <div class="menu_trigger" id="myMenuTrigger"></div>
+            <div class="menu animate">
+
+                <span class="icon_close" id="menuClose"></span>
+                <ul id="mainMenu">
+                    <li><a href="#header" class="active">Home</a></li>
+                    <li><a href="#sAbout">About</a></li>
+                    <li><a href="#sFeaturedWork">Project <span class="horizontalInvisible">Highlights</span></a></li>
+                    <li><a href="#sServices">Services <span class="horizontalInvisible">We Offer</span></a></li>
+                    <li><a href="#sBlog">Blog</a></li>
+                    <li><a href="#sTestimonials">Video production</a></li>
+                    <li><a href="#sContact">Get In Touch</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--END Header-->
+
+        <!--Main slider-->
+        <section class="mainSliderContainer">
+            <div class="mainSlider">
+                <ul>
+                    <!-- SLIDE 1-->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="0">
+                        <!-- MAIN IMAGE -->
+                        <img alt="Clever programming" src="images/slidebg1.jpg"
+                            data-bgfit="cover" data-bgposition="center center"
+                            data-bgrepeat="no-repeat" />
+
+                        <!-- SECONDARY IMAGE -->
+                        <div class="slideImg tp-resizeme customin customout tp-caption"
+                            data-x="1150" data-y="95" data-speed="1000" data-start="200"
+                            data-customin="x:200px;y:200px;"
+                            data-customout="x:200px;y:200px;"
+                            data-easing="easeOutExpo">
+                            <img alt="Clever" src="images/slideimg_1.png" />
+                        </div>
+
+                        <!-- TEXT LINE 1 -->
+                        <div class="bigText tp-resizeme lft ltt tp-caption"
+                            data-x="375" data-y="400" data-speed="1000" data-start="600"
+                            data-easing="easeOutExpo">
+                            Clever code
+                        </div>
+
+                        <!-- TEXT LINE 2 -->
+                        <div class="bigText tp-resizeme lft ltt tp-caption"
+                            data-x="375" data-y="520" data-speed="1000" data-start="800"
+                            data-easing="easeOutExpo">
+                            Creative design
+                        </div>
+
+                        <!-- TEXT LINE 3 -->
+                        <div class="mediumText imgArrowOffset tp-resizeme lft ltt tp-caption"
+                            data-x="450" data-y="625" data-speed="1000" data-start="1000"
+                            data-easing="easeOutExpo">
+                            <a href="#sFeaturedWork">Project highlights.</a>
+                        </div>
+
+                        <!-- ARROW ON TEXT LINE 3 -->
+                        <div class="slideImgArrow tp-resizeme lfb ltt tp-caption"
+                            data-x="375" data-y="620" data-speed="2000" data-start="700"
+                            data-easing="Elastic.easeOut">
+                            <a href="#sFeaturedWork">
+                                <img alt="Go to portfolio" src="images/arrow_down.png" /></a>
+                        </div>
+                    </li>
+
+                    <!-- SLIDE 2-->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="0">
+                        <!-- MAIN IMAGE -->
+                        <img alt="Universal code" src="images/slidebg2.jpg"
+                            data-bgfit="cover" data-bgposition="center center"
+                            data-bgrepeat="no-repeat" />
+
+                        <!-- SECONDARY IMAGE -->
+                        <div class="slideImg tp-resizeme customin customout tp-caption"
+                            data-x="1070" data-y="295" data-speed="1000" data-start="0"
+                            data-customin="x:-200px;y:-200px;"
+                            data-customout="x:-200px;y:-200px;"
+                            data-easing="easeOutExpo">
+                            <img alt="iPad" src="images/ipad-chatpiper.png" />
+                        </div>
+
+                        <!-- SECONDARY IMAGE -->
+
+                        <div class="slideImg tp-resizeme customin customout tp-caption"
+                            data-x="1148" data-y="387.5" data-speed="1000" data-start="1700"
+                            data-customin="scaleX:0;scaleY:0;"
+                            data-customout="scaleX:0;scaleY:0;"
+                            data-easing="easeOutExpo">
+                            <img alt="iPad App" src="images/chp.png" />
+                        </div>
+                        <!-- TEXT LINE 1 -->
+                        <div class="bigText tp-resizeme lft ltt tp-caption"
+                            data-x="375" data-y="400" data-speed="1000" data-start="500"
+                            data-easing="easeOutExpo">
+                            App
+                        </div>
+
+                        <!-- TEXT LINE 2 -->
+                        <div class="bigText tp-resizeme lft ltt tp-caption"
+                            data-x="375" data-y="520" data-speed="1000" data-start="600"
+                            data-easing="easeOutExpo">
+                            development
+                        </div>
+
+                        <!-- TEXT LINE 3 -->
+                        <div class="mediumText imgArrowOffset tp-resizeme lft ltt tp-caption"
+                            data-x="450" data-y="620" data-speed="1000" data-start="700"
+                            data-easing="easeOutExpo">
+                            <a href="#sFeaturedWork">Project highlights.</a>
+                        </div>
+
+                        <!-- ARROW ON TEXT LINE 3 -->
+                        <div class="slideImgArrow tp-resizeme lfb ltt tp-caption"
+                            data-x="375" data-y="620" data-speed="2000" data-start="700"
+                            data-easing="Elastic.easeOut">
+                            <a href="#sFeaturedWork">
+                                <img alt="Go to portfolio" src="images/arrow_down.png" /></a>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+
+              <!-- <span class="Prev animate">
+                  <img alt="Previous" src="images/prev.png" /></span>
+              <span class="Next animate">
+                  <img alt="Next" src="images/next.png" /></span> -->
+                <!--<div class="navButtons text-center">
+                    <div class="Prev animate"><img alt="Previous" src="images/prev.png" class="img-responsive" /></div>
+                    <div class="Next animate"><img alt="Next" src="images/next.png" class="img-responsive" /></div>
+                </div>-->
+                <div class="Prev animate">
+                    <img alt="Previous" src="images/prev.png" class="img-responsive" />
+                </div>
+                <div class="Next animate">
+                    <img alt="Next" src="images/next.png" class="img-responsive" />
+                </div>
+            </div>
+        </section>
+        <!--END Main slider-->
+
+        <!--Welcome to About section-->
+        <section id="sAbout" class="obliqueCut lightSection separatorTop">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="separator" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 L100 0 L100 100 Z"></path>
+            </svg>
+            <div class="container">
+                <!--SECTION TITLE-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="sectionInfo row">
+                            <h2 class="sectionTitle col-sm-4">White City <span class="underline">Code</span></h2>
+                            <h2 class="sectionDescription col-sm-8">Web and app development. Well done in Romania.</h2>
+                        </div>
+                    </div>
+                </div>
+                <!--END SECTION TITLE-->
+
+                <!--SECTION CONTENT-->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="left">
+                            <h3><span class="icon_chat_alt"></span>Who we are</h3>
+                            <p>A Romanian company based in Alba Iulia (<em>White City</em>). We are a highly qualified and experienced team, with a
+                            total of 18 years of studies in Computer Science, Management, Translations and even Law.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="bottom" data-appear-delay="300">
+                            <h3><span class="icon_toolbox_alt"></span>How we can help</h3>
+                            <p><a href="#sServices" style="text-decoration:underline">We can do</a> software architecture, software development, web app development, mobile app development, software deployment. We have experience with large applications, e-commerce, API integrations.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="right" data-appear-delay="600">
+                            <h3><span class="icon_mug"></span>How we can work together</h3>
+                            <p><a href="#sContact" style="text-decoration:underline">Get in touch</a> with us and let us hear about your project. If you have aleady devised the reqirements, we can give you a  time and cost estimation, otherwise we can work on an hourly basis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--END SECTION CONTENT-->
+            </div>
+        </section>
+        <!--END Welcome section-->
+
+        <!--Featured work section-->
+        <section id="sFeaturedWork" class="obliqueCut darkSection separatorTop imageBackground img1Back">
+            <!--<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="separator" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 L100 0 L100 100 Z"></path>
+            </svg>-->
+
+
+            <div class="container">
+                <!--SECTION TITLE-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="sectionInfo row">
+                            <h1 class="sectionTitle col-sm-12" style="text-align: center; font-size: 50px;"><span class="underline">Project</span> Highlights.</h1>
+                        </div>
+                    </div>
+                </div>
+                <!--END SECTION TITLE-->
+
+            </div>
+            <!--SECTION CONTENT-->
+            <div class="fwCarouselContainer carouselContainer" data-appear="fade-in" style="padding-top: 120px;">
+                <ul class="fwCarousel magPopupUl">
+                    <li class="scaleRotateImg">
+                        <img alt="Image" src="images/feat03small.jpg" data-mfp-src="images/feat03.jpg" class="img-responsive animate" /></li>
+                    <li class="scaleRotateImg">
+                        <img alt="Image" src="images/feat05small.jpg" data-mfp-src="images/feat05.jpg" class="img-responsive animate" /></li>
+                    <li class="scaleRotateImg">
+                        <img alt="Image" src="images/feat01small.jpg" data-mfp-src="images/feat01.jpg" class="img-responsive animate" /></li>
+                    <li class="scaleRotateImg">
+                        <img alt="Image" src="images/feat02small.jpg" data-mfp-src="images/feat02.jpg" class="img-responsive animate" /></li>
+                    <li class="scaleRotateImg">
+                        <img alt="Image" src="images/feat04small.jpg" data-mfp-src="images/feat04.jpg" class="img-responsive animate" /></li>
+                    <li class="scaleRotateImg">
+                        <img alt="Image" src="images/feat06small.jpg" data-mfp-src="images/feat06.jpg" class="img-responsive animate" /></li>
+                </ul>
+                <span class="Prev animate">
+                    <img alt="Previous" src="images/prev.png" /></span>
+                <span class="Next animate">
+                    <img alt="Next" src="images/next.png" /></span>
+            </div>
+
+            <!--END SECTION CONTENT-->
+        </section>
+        <!--END Featured work section-->
+
+
+        <!-- First Video section-->
+        <section id="sQuote" class="obliqueCut lightSection graySection imageBackground img1Bkg paddingBottom120" data-parallax-speed="-0.6">
+            <div class="video localVideo invisible767">
+                <video autoplay loop muted>
+                   <source src="video/white.mp4" type="video/mp4" />
+                   <source src="video/white.ogv" type="video/ogg" />
+                   <source src="video/white.webm" type="video/webm" />
+                </video>
+            </div>
+            <!-- SECTION CONTENT-->
+            <div class="container" style="height: 400px;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="quote" data-appear="fade-in">
+                            <div class="quoteText alternateColor">There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies and the other way is to make it so complicated that there are no obvious deficiencies.</div>
+                            <div class="quoteAuthor">-  C.A.R. Hoare, The 1980 ACM Turing Award Lecture</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--END SECTION CONTENT-->
+        </section>
+        <!--END First Video section-->
+
+        <!--Services we offer section-->
+        <section id="sServices" class="obliqueCut darkSection purpleSection separatorTop extraSpacing2 paddingBottom120">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="separator"  viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 L100 0 L100 100 Z"></path>
+            </svg>
+            <!--SECTION ICON-->
+
+            <div class="container">
+                <!--SECTION TITLE-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="sectionInfo row">
+                            <h2 class="sectionTitle col-sm-4"><span class="underline">Services</span> we offer.</h2>
+                            <h2 class="sectionDescription col-sm-8">We’re passionate about technology and taking on new challenges.</h2>
+                        </div>
+                    </div>
+                </div>
+                <!--END SECTION TITLE-->
+
+                <!--SECTION CONTENT-->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="left">
+                            <h3><span class="icon_chat_alt"></span>Consultation</h3>
+                            <p>It is paramount that in the planning process you involve a specialist before you start any software project. You will have more acurate estimates for time and costs and a better overview of teh challenges ahead of you.</p>
+                        </div>
+                        <!-- END FEATURE BOX -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="top" data-appear-delay="200">
+                            <h3><span class=" icon_toolbox_alt"></span>Creative</h3>
+                            <p>We can develop end-to-end creative projects for web and print, but also small trailer videos or commercials (from shooting to deploying). We have the skills and the gear you need for your adverts!</p>
+                        </div>
+                        <!-- END FEATURE BOX -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="right" data-appear-delay="400">
+                            <h3><span class="icon_mug"></span>Coding & Development</h3>
+                            <p>We code for the web using interpreted languages (Python, Ruby, Php) and their frameworks (Django, Rails, Symfony). We a are big fans of functional languages (Erlang, Elixir, Clojure, Haskell). We make mobile apps in Swift and Java.</p>
+                        </div>
+                        <!-- END FEATURE BOX -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="left">
+                            <h3><span class="icon_camera_alt"></span>Performance tunning for the web</h3>
+                            <p>We understand the ins and outs of web application development and can assist with making your application faster and more reliable accross a wide range of devices. Scaling your application is no longer a problem!</p>
+                        </div>
+                        <!-- END FEATURE BOX -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="bottom" data-appear-delay="200">
+                            <h3><span class=" icon_easel"></span>Payment systems integration</h3>
+                            <p>We have a lot of experience with payment methods integration for the web and mobile. We have done development of payment plugins for all the major e-commerce platforms and we understand the most common integration approaches.</p>
+                        </div>
+                        <!-- END FEATURE BOX -->
+                    </div>
+                    <div class="col-sm-4">
+                        <!-- START FEATURE BOX -->
+                        <div class="featureBox clearfix" data-appear="fade-in" data-appear-direction="right" data-appear-delay="400">
+                            <h3><span class="icon_mail_alt"></span>Application deployment</h3>
+                            <p>We have more than decent system engineering skills and can assist with deploying your application either in dedicated environments or to the cloud. We can also help you create development environments for your developers using containers.</p>
+                        </div>
+                        <!-- END FEATURE BOX -->
+                    </div>
+                </div>
+                <!--END SECTION CONTENT-->
+            </div>
+        </section>
+        <!--END Services we offer section-->
+
+        <!--Blog section-->
+        <section id="sBlog" class="obliqueCut lightSection separatorTop separatorBottom paddingBottom0">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="separator"  viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 L100 0 L100 100 Z"></path>
+            </svg>
+            <!--SECTION ICON
+            <div class="sectionIcon  icon_ribbon_alt"></div>-->
+            <div class="container">
+                <!--SECTION TITLE-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="sectionInfo row">
+                            <h2 class="sectionTitle col-sm-4"><span class="underline">Latest</span> from the blog.</h2>
+                            <h2 class="sectionDescription col-sm-8">Occasionally we blog about technology challenges we encounter.</h2>
+                        </div>
+                    </div>
+                </div>
+                <!--END SECTION TITLE-->
+
+                <!-- SECTION CONTENT -->
+                <div id="blog_container" class="row blog_latest blog_masonry" style="position:relative; height:0px">
+                    <div id="app-blog">
+                    </div>
+                </div>
+                <!--END SECTION CONTENT-->
+
+
+            </div>
+            <!-- END CONTAINER -->
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="separator" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 L100 0 L0 0 Z"></path>
+            </svg>
+        </section>
+        <!--END Blog section-->
+
+        <!--Video Production section-->
+        <section id="sTestimonials" class="obliqueCut lightSection imageBackground img2Bkg paddingBottom120" data-parallax-speed="-1.5">
+
+            <div class="video localVideo invisible767">
+                <video autoplay loop muted>
+                   <source src="video/white.mp4" type="video/mp4" />
+                   <source src="video/white.ogv" type="video/ogg" />
+                   <source src="video/white.webm" type="video/webm" />
+                </video>
+                <div class="videoControls">
+                   <span class="fullScreenVideo arrow_expand animate tooltip_top" title="Toggle Fullscreen"></span>
+                   <span class="playVideo arrow_triangle-right animate tooltip_top" title="Toggle play/pause"></span>
+                   <span class="muteVideo icon_volume-high_alt animate tooltip_top" title="Toggle mute/unmute"></span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12" data-appear="fade-in" data-appear-direction="top">
+                        <!--VIDEO SLIDER-->
+
+                        <ul class="testimonials style1 clearfix">
+                            <!--VIDEO-->
+                            <li>
+                                <div class="testimonial">
+                                    <p class="text alternateColor"><b>SENDY CLUB </b> promo video</p>
+                                    <a href="https://www.facebook.com/SendyClub/videos/794235277363871/"
+                                        class="source" target="new">Facebook low res</a>
+                                </div>
+                            </li>
+                            <!--END VIDEO-->
+
+                            <!--VIDEO-->
+                            <li>
+                                <div class="testimonial">
+                                    <p class="text alternateColor">Gicu Grozav<b> Sendy Club workout</b> </p>
+                                    <a href="https://www.youtube.com/watch?v=cDPt1J9pSRI"
+                                        class="source" target="new">YouTube</a>
+                                </div>
+                            </li>
+                            <!--END VIDEO-->
+
+                        </ul>
+                        <div class="sliderPagination text-center"></div>
+                        <!--END VIDEO SLIDER-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--END VIDEO PRODUCTION section-->
+
+
+
+        <!--Get in touch section-->
+        <section id="sContact" class="obliqueCut lightSection graySection separatorTop separatorBottom">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="separator" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 L100 0 L100 100 Z"></path>
+            </svg>
+
+            <div class="container">
+                <!--SECTION TITLE-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="sectionInfo row">
+                            <h2 class="sectionTitle col-sm-4"><span class="underline">Get</span> in touch.</h2>
+                            <h2 class="sectionDescription col-sm-8"><span class="titleColor">Call us at +40 358 401 824</span><br />
+                                or</h2>
+                        </div>
+                    </div>
+                </div>
+                <!--END SECTION TITLE-->
+
+                <div class="row">
+                    <!--SOCIAL CONTACT-->
+                    <div class="col-sm-3">
+                        <ul class="socialList style2" data-appear="fade-in">
+                            <li>
+                                <a href="https://github.com/adrianrosian" target="new">
+                                    <span class="social_share_circle" ></span>&nbsp;Github code
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.google.com/document/d/1EH-M7wYHY-TJRC7hr9HOn9W_gssURHVnfQpgxzXmTUQ/edit?usp=sharing" target="new">
+                                    <span class="social_share_circle" ></span>&nbsp;Paper on concurrency
+                                </a>
+                            </li>
+			    <li>
+				<a href="https://www.naturgral.com" title="NaturGral natural products" target="new">
+				    <span class="social_share_circle"></span> Our latest project
+				</a>
+				from our customer <a href="http://www.biokraft-swiss.com" title="Biokraft natural suplements" target="new">BioKraft</a>
+			    </li>
+                            <!-- <li><a class="soc_instagram" href="#">Follow us on instagram</a></li>
+                            <li><a class="soc_linkedin" href="#">Connect on linkedin</a></li>
+                            <li><a class="soc_googlep" href="#">Join us on google+</a></li>
+                            <li><a class="soc_twitter" href="#">Follow us on twitter</a></li>
+                            <li><a class="soc_dribble" href="#">View our work on dribble</a></li> -->
+                        </ul>
+                    </div>
+                    <!--END SOCIAL CONTACT-->
+
+                    <!--CONTACT FORM-->
+                    <div class="col-sm-8 col-sm-offset-1">
+                        <form method="POST" class="contactForm" action="/api/contact" data-appear="fade-in" data-appear-delay="300">
+                            <h2>Say hello!</h2>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" name="name" placeholder="Name:" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" name="email" placeholder="Email:" />
+                                </div>
+                                <div class="col-sm-12">
+                                    <textarea name="message" placeholder="Message:" rows="1"></textarea>
+                                </div>
+                                <div class="col-sm-12 text-right">
+                                    <span class="submit descriptionColor">
+                                        <input type="submit" value="send message" class="titleColor" />
+                                    </span>
+                                    <div id="contactResponse" class="text-left"></div>
+                                </div>
+                            </div>
+                            <div class="contactBusy"><div class="progressContainer"><span class="typing_loader"></span></div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--END CONTACT FORM-->
+                </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="separator" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 L100 0 L0 0 Z"></path>
+            </svg>
+        </section>
+        <!--END Get in touch section-->
+
+
+
+        <!--Footer-->
+        <footer id="footer" class="obliqueCut lightSection separatorTop">
+
+            <div class="container" style="padding-top: 90px;">
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <div><span class="highlight">&copy; White City Code</span> All rights Reserved</div>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--END Footer-->
+
+    </div>
+
+
+    <!--Scripts-->
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/backbone-min.js"></script>
+    <script type="text/javascript" src="js/markdown.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.nprogress.min.js"></script>
+    <script type="text/javascript" src="js/jquery.color.min.js"></script>
+    <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery-magnific-popup.min.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="js/instafeed.min.js"></script>
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+    <!-- jQuery REVOLUTION Slider  -->
+    <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <!--My javascript-->
+    <script type="application/template" id="blog_template">
+        <!-- START ARTICLE -->
+        <% _.each(articles, function (article) {
+            var lastMod = new Date(article.created); %>
+            <div class="col-sm-4 article_container" data-appear="fade-in">
+                <article id="summary-<%= article.id %>">
+                    <div class="meta">
+                        <div class="article_type">
+                            <img src="https://www.gravatar.com/avatar/53df4e40af9a37fddc9a879a924c9b0b?d=identicon"
+                                alt="WhiteCity Code Team" style="border-radius: 50%">
+                        </div>
+                        <div class="article_date"><%= lastMod.toDateString() %></div>
+                    </div>
+                    <div class="article_content">
+                        <h3><a href="#blogpost/<%= article.id %>"><%= article.title %></a></h3>
+                        <div><%= markdown.toHTML(article.body) %></div>
+                        <a class="arrowLink arrowRight" href="#blogpost/<%= article.id %>">read article</a>
+                    </div>
+                </article>
+                <div class="modal fade" id="article-<%= article.id %>">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><%= article.title %></h4>
+                      </div>
+                      <div class="modal-body"></div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            </div>
+        <% }); %>
+        <!-- END ARTICLE -->
+        <!-- PAGINATION -->
+        <div class="col-sm-12" data-appear="fade-in">
+            <nav>
+              <ul class="pagination">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <% for (page = 1; page <= numPages; page++) {
+                    var pageLinkClass = (page == currentPage + 1) ? 'active': ''; %>
+                    <li class="<%= pageLinkClass %>">
+                        <a href="#blog/<%= page - 1 %>"><%= page %></a>
+                    </li>
+                <% } %>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+        </div>
+        <!-- END PAGINATION -->
+    </script>
+    <script type="text/javascript" src="js/blog.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/markdown.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="out/goog/base.js" type="text/javascript"></script>
     <script src="main.js" type="text/javascript"></script>
     <script src="js/compiled/om_blog.js" type="text/javascript"></script>
-  </body>
+
+</body>
 </html>
