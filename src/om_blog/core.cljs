@@ -2,10 +2,8 @@
     (:require [cljsjs.markdown :as markdown]
               [om.core :as om :include-macros true]
               [goog.events :as events]
-              [goog.dom :as gdom]
               [om-bootstrap.button :as b]
               [om-bootstrap.modal :as md]
-              [goog.events :as gevents]
               [cljs.core.async :refer [put! chan <!]]
               [om.dom :as dom :include-macros true])
     (:require-macros [cljs.core.async.macros :refer [go]])
@@ -111,9 +109,8 @@
         om/IRenderState
         (render-state [this {:keys [current-page]}]
             (dom/div #js {:id "clear"}
-            (apply dom/ul nil (om/build-all article (:articles state)
-                            {:init-state {:current-page current-page}}))
-            (om/build page-bar   state
+            (apply dom/ul nil (om/build-all article (:articles state)))
+            (om/build page-bar state
                             {:init-state {:current-page current-page}})))
         om/IWillMount
         (will-mount [_]
@@ -121,10 +118,8 @@
                 (let [current-page (om/get-state owner :current-page)]
                 (go (loop []
                     (let [change (<! current-page)]
-                        (if (= (:type change) "single")
-                            (om/transact! state :current-page (fn [] (:value change)))
                             (om/transact! state :articles (fn [] (get change "articles")))
-                            ))(recur))))
+                            )(recur))))
                 (load-articles
                     (str "http://localhost:3000/blogposts?page=" (- (:page-number state) 1))
                         (fn [res]
@@ -133,17 +128,7 @@
                                 (let [num-pages (/ (count (:articles state)) 5)]
                                 (om/transact! state :article-pages (fn [] num-pages))))))))))
 
-
-(defn main-page [state owner]
-    (reify
-        om/IRender
-        (render [_]
-            (dom/div #js {:id "content"
-                          :className ""}
-            (dom/div nil
-                    (dom/div nil (om/build articles state)))))))
-
-(om/root main-page app-state
+(om/root articles app-state
   {:target (. js/document (getElementById "app-blog"))})
 
 
