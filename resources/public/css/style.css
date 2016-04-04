@@ -45,9 +45,6 @@ TABLE OF CONTENTS
 /***************************
 * GENERAL STUFF
 ****************************/
-.modal.in {
-  display: block
-}
 /* Text */
 body { font-family: 'Lato', sans-serif; color: #999; font-size: 16px; line-height: 30px; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; margin-top: 0; color: #000; }
@@ -1064,4 +1061,25 @@ section { position: relative; }
 
 .article_container:nth-child(4n){
     clear:left;
+}
+.article_container:nth-child(7n){
+    clear:left;
+    float:right;
+}
+
+.article_container:nth-child(8n){
+    float:right;
+}
+.article_container:nth-child(9n){
+    float:right;
+}
+.modal.in {
+  display: block
+}
+
+.pagebtn {
+    border-radius: 0.2em;
+    border: 0.1em solid grey;
+    background-color: white;
+
 }

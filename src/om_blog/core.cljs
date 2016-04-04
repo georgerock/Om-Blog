@@ -91,16 +91,9 @@
                 (dom/nav nil
                     (map
                         #(dom/button #js {:type "button"
-                                          :className "pagination"
+                                          :className "pagination pagebtn"
                                           :onClick (fn [] (reload-articles (- % 1) current-page))} % )
                             (range 1 (+ 1 (:article-pages state)))))))))
-
-
-(defn get-clear-left [res num-art]
-    (let [id-num (take-nth 3 (range num-art))
-          articles (get res "articles")
-          clear-left (map #(str (get (nth articles %) "id")) id-num)]
-        clear-left))
 
 (defn articles [state owner]
     (reify
@@ -128,7 +121,6 @@
                     (str "http://localhost:3000/blogposts?page=" (- (:page-number state) 1))
                         (fn [res]
                             (do
-                                (.log js/console (str (get-clear-left res (count (:articles state)))))
                                 (om/transact! state :articles (fn [] (get res "articles")))
                                 (let [num-pages (/ (count (:articles state)) 5)]
                                 (om/transact! state :article-pages (fn [] num-pages))))))))))
