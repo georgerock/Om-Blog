@@ -2,8 +2,10 @@
     (:require [cljsjs.markdown :as markdown]
               [om.core :as om :include-macros true]
               [goog.events :as events]
+              [goog.dom :as gdom]
               [om-bootstrap.button :as b]
               [om-bootstrap.modal :as md]
+              [goog.events :as gevents]
               [cljs.core.async :refer [put! chan <!]]
               [om.dom :as dom :include-macros true])
     (:require-macros [cljs.core.async.macros :refer [go]])
@@ -83,17 +85,27 @@
                                             (str (get article "body")))}})
                     (om/build trigger article)]))))))
 
+                    (defn add-annoying-alert-listener_goog!
+                      [a]
+                      (gevents/listen
+                       a goog.events.EventType.CLICK
+                       (fn [evt]
+                         (let [atxt (-> evt .-currentTarget gdom/getTextContent)
+                               msg  (str "You clicked " atxt)]
+                           (.alert js/window msg)
+                           (.preventDefault evt)))))
+
+
 (defn page-bar [state owner]
     (reify
         om/IRenderState
         (render-state [this {:keys [current-page]}]
             (dom/div #js {:className "col-sm-12"}
                 (dom/nav nil
-                    (map
-                        #(dom/button #js {:type "button"
-                                          :className "pagination pagebtn"
-                                          :onClick (fn [] (reload-articles (- % 1) current-page))} % )
-                            (range 1 (+ 1 (:article-pages state)))))))))
+                    (dom/ul #js {:className "pagination"}
+                        (map
+                            #(dom/li #js {:onClick (fn [] (reload-articles (- % 1) current-page))}
+                                (dom/a nil %))(range 1 (+ 1 (:article-pages state))))))))))
 
 (defn articles [state owner]
     (reify
