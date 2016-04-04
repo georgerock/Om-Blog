@@ -78,23 +78,19 @@
         (render-state [state {:keys [current-page]}]
             (dom/div #js {:className "col-sm-4 article_container"}
                 (dom/article #js {:id (str (get article "id"))}
-                (apply dom/div #js {:className "article_content"}
-                    [(dom/h3 nil (get article "title"))
+                (apply dom/div nil
+                    [(dom/div #js {:className "meta"}
+                        (dom/div #js {:className "article_type"}
+                            (dom/img #js {:src "https://www.gravatar.com/avatar/53df4e40af9a37fddc9a879a924c9b0b?d=identicon"
+                                          :className "img-circle"}))
+                        (dom/div #js {:className "article_date"}
+                            (.toDateString (js/Date. (get article "created")))))
+                    (dom/div #js {:className "article_content"}
+                    (dom/h3 nil (get article "title"))
                     (dom/div #js {:dangerouslySetInnerHTML #js
                                  {:__html (.toHTML js/markdown
                                             (str (get article "body")))}})
-                    (om/build trigger article)]))))))
-
-                    (defn add-annoying-alert-listener_goog!
-                      [a]
-                      (gevents/listen
-                       a goog.events.EventType.CLICK
-                       (fn [evt]
-                         (let [atxt (-> evt .-currentTarget gdom/getTextContent)
-                               msg  (str "You clicked " atxt)]
-                           (.alert js/window msg)
-                           (.preventDefault evt)))))
-
+                    (om/build trigger article))]))))))
 
 (defn page-bar [state owner]
     (reify
@@ -117,7 +113,7 @@
             (dom/div #js {:id "clear"}
             (apply dom/ul nil (om/build-all article (:articles state)
                             {:init-state {:current-page current-page}}))
-            (om/build page-bar state
+            (om/build page-bar   state
                             {:init-state {:current-page current-page}})))
         om/IWillMount
         (will-mount [_]
